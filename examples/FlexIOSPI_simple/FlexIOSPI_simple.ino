@@ -23,6 +23,14 @@ void setup() {
 #endif
   if (!SPIFLEX.begin()) {
     Serial.println("SPIFlex Begin Failed");
+    while(1)
+    {
+       // Sit in an infinite loop. This helps in the following ways
+       //   - avoids a crash
+       //   - lets the users see the error messages in the initialization
+       //   - makes it easier to flash Teensy again from Arduino UI
+       delay(1000);
+    }
   }
 
   // See if we can update the speed...
